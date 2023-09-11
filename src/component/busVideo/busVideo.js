@@ -4,23 +4,27 @@ import "./busVideo.css";
 
 export default function BusVideo() {
   const [data, setData] = useState();
-  var player = videojs("my_video");
-
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/get_weather", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => setData(result))
-  //     .catch((err) => console.error("Error:", err));
-  // }, []);
+  const [player, setplayer] = useState();
 
   useEffect(() => {
-    player.play();
+    fetch("http://127.0.0.1:8000/get_weather", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => setData(result))
+      .catch((err) => console.error("Error:", err));
   }, []);
+
+  useEffect(() => {
+    setplayer(videojs("my_video2"));
+  }, []);
+
+  useEffect(() => {
+    player && player.play();
+  }, [player]);
 
   return (
     <div className="video">
@@ -29,7 +33,7 @@ export default function BusVideo() {
         <p id="kor_ex_video">버스 내 혼잡도</p>
       </div>
       <div className="video_box">
-        <video id="my_video" className="video-js" muted="muted" controls>
+        <video id="my_video2" className="video-js" muted="muted" controls>
           <source
             src="/static/video/hls/index.m3u8"
             type="application/x-mpegURL"

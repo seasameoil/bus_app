@@ -9,12 +9,25 @@ import Chart from "./component/chart/chart";
 import Works from "./component/works/works";
 
 function App() {
+  const videoJsOptions = {
+    autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    sources: [
+      {
+        src: "/static/video/hls/index.m3u8",
+        type: "application/x-mpegURL",
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
       <MainImage />
       <TaskInfo />
-      <BusVideo />
+      <BusVideo options={videoJsOptions} />
       <Chart />
       <Works />
       <Footer />
