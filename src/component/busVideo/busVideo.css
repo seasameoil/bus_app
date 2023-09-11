@@ -1,0 +1,60 @@
+.video {
+  padding-top: 100px;
+  padding-left: 100px;
+}
+
+#ex_video {
+  font-size: 20px;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+#kor_ex_video {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.video_box {
+  padding-top: 50px;
+  display: flex;
+}
+
+#my_video {
+  width: 800px;
+  height: 500px;
+  margin-right: 70px;
+}
+
+.type {
+  padding-top: 40px;
+}
+
+.cal {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* #green {
+  font-size: 24px;
+  font-weight: 700;
+  color: green;
+}
+
+#blue {
+  font-size: 24px;
+  font-weight: 700;
+  color: blue;
+}
+
+#yellow {
+  font-size: 24px;
+  font-weight: 700;
+  color: orange;
+}
+
+#red {
+  font-size: 24px;
+  font-weight: 700;
+  color: red;
+} */

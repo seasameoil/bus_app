@@ -1,0 +1,19 @@
+.box {
+  height: 400px;
+}
+
+.word {
+  padding-top: 120px;
+  padding-left: 180px;
+}
+
+#eng {
+  font-size: 13px;
+  margin: 5px;
+}
+
+#kor {
+  margin-top: 15px;
+  font-size: 55px;
+  font-weight: 700;
+}
