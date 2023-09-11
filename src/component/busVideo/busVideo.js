@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import videojs from "video.js";
 import "./busVideo.css";
 
 export default function BusVideo() {
   const [data, setData] = useState();
+  var player = videojs("my_video");
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/get_weather", {
@@ -16,6 +18,10 @@ export default function BusVideo() {
       .catch((err) => console.error("Error:", err));
   }, []);
 
+  useEffect(() => {
+    player.play();
+  });
+
   return (
     <div className="video">
       <div className="explanation">
@@ -23,7 +29,7 @@ export default function BusVideo() {
         <p id="kor_ex_video">버스 내 혼잡도</p>
       </div>
       <div className="video_box">
-        <video id="my_video" className="video-js" controls muted="muted">
+        <video id="my_video" className="video-js" muted="muted" controls>
           <source
             src="/static/video/hls/index.m3u8"
             type="application/x-mpegURL"
