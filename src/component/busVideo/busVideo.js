@@ -25,7 +25,7 @@ export default function BusVideo() {
       <div className="video_box">
         <video id="my_video" className="video-js" controls muted="muted">
           <source
-            src="static/video/hls/index.m3u8"
+            src="/static/video/hls/index.m3u8"
             type="application/x-mpegURL"
           />
         </video>
