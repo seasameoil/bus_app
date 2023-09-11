@@ -1,37 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ApexChart from "react-apexcharts";
 
+import "./chart.css";
+
 export default function Chart() {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/Bus", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => setData(result))
+      .catch((err) => console.error("Error:", err));
+  }, []);
+
   return (
-    <div>
+    <div className="chart_box">
       <ApexChart
         type="line"
         series={[
-          { name: "Price", data: [1000, 2000, 3000] },
-          { name: "Price2", data: [1500, 1000, 2500] },
+          { name: "Congestion", data: [10, 41, 35, 51, 49, 62, 69, 91, 148] },
         ]}
         options={{
-          theme: { mode: "dark" },
+          series: [
+            {
+              name: "Desktops",
+              data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+            },
+          ],
           chart: {
-            height: 200,
-            toolbar: { show: false },
-            background: "transparent",
+            height: 350,
+            type: "line",
+            zoom: {
+              enabled: false,
+            },
           },
-          stroke: { curve: "smooth", width: 4 },
-          grid: { show: false },
-          yaxis: { show: false },
+          dataLabels: {
+            enabled: false,
+          },
+          stroke: {
+            curve: "straight",
+          },
+          grid: {
+            row: {
+              colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+              opacity: 0.5,
+            },
+          },
           xaxis: {
-            labels: { show: true },
-            axisTicks: { show: false },
-            axisBorder: { show: false },
-            categories: [1660004640, 1660091040, 1660177440],
-            type: "datetime",
+            categories: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+            ],
           },
-          fill: {
-            type: "gradient",
-            gradient: { gradientToColors: ["blue"], stops: [0, 100] },
-          },
-          colors: ["red"],
         }}
       />
     </div>
