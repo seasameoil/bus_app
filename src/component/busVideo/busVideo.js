@@ -6,21 +6,21 @@ export default function BusVideo() {
   const [data, setData] = useState();
   var player = videojs("my_video");
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/get_weather", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => setData(result))
-      .catch((err) => console.error("Error:", err));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://127.0.0.1:8000/get_weather", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => setData(result))
+  //     .catch((err) => console.error("Error:", err));
+  // }, []);
 
   useEffect(() => {
     player.play();
-  });
+  }, []);
 
   return (
     <div className="video">
